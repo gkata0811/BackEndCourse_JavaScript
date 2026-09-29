@@ -216,6 +216,9 @@ console.log(fogasKerdes(szoveg8));
     Megjegyzés: az „a” helyett „b” lesz, a „z” helyett „a”.
 */
 
+
+// A megoldás
+
 function szomszedosBetu(szoveg) {
     let eredmeny = "";
 
@@ -259,3 +262,53 @@ let szoveg9 = prompt(
 
 console.log("9. feladat - Szomszédos betűk:");
 console.log(szomszedosBetu(szoveg9));
+
+
+// B megoldás
+
+function nextChar(text){
+    if (typeof text != "string")
+        return text;
+
+    let str = "";
+
+    for (let char of text){
+        switch (true){
+            case char >= "a" && char < "z" || char >= "A" && char < "Z":
+                str += String.fromCharCode(char.charCodeAt(0) + 1);
+                break;
+            case char == "z" || "Z":
+                str += String.fromCharCode(char.charCodeAt(0) - 25);
+            default:
+                str += char;
+        }
+    }
+
+    return str;
+}
+
+function prevChar(text){
+    if (typeof text != "string")
+        return text;
+
+    let str = "";
+
+    for (let char of text){
+        switch (true){
+            case char > "a" && char <= "z" || char > "A" && char <= "Z":
+                str += String.fromCharCode(char.charCodeAt(0) - 1);
+                break;
+            case char == "z" || "Z":
+                str += String.fromCharCode(char.charCodeAt(0) + 25);
+            default:
+                str += char;
+        }
+    }
+
+    return str;
+}
+
+/*
+    Titkosítás továbbfejlesztése. Vegyünk fel egy tömböt pár speciális karakterrel a függvény belsejébe max 4-5
+    Karekterenkénti feldolgozásban minden szóközt cseréljünk véletlenszerűen egy speciális karakterre a fent definiált tömbből
+ */
