@@ -124,3 +124,36 @@ let path = "/site/pages/2026-05-12/site-name";
 let pathcChunks = path.split("/");
 
 console.log(pathcChunks);
+
+
+// YYYY-MM-DD hh:mm:ss
+
+/*
+    Szövegek cseréje
+
+    .replace(mit: string | RegExp, mire: string | function) - a "mit" paraméter értékét lecseréli a "mire" paraméter értékére az első találatig
+    .replaceAll(mit, mire) - a "mit" paraméter értékét lecseréli a "mire" paraméter értékére az összes találat esetében
+*/
+
+let barna = "Barna szereti a barna színt, ezért barna kabátka van.";
+
+console.log(
+    barna.replace("barna", "piros")
+);
+
+console.log(
+    barna.replaceAll("barna", "piros")
+);
+
+console.log(
+    barna.replace(/barna/gi, function(mit){
+        return mit[0] == "B" ? "Piros" : "piros";
+    })
+)
+
+
+let kata = "Kata alma kompótot főz, és körte lekvárt tett a pitébe.";
+
+console.log(
+    kata.replace(/alma|körte/g, "meggy")
+);
