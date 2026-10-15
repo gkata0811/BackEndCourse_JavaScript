@@ -1,4 +1,4 @@
-console.log("tömbműveletek");
+console.log("Tömbműveletek");
 
 
 /*
@@ -22,7 +22,7 @@ console.log(
     m[1][2]
 );
 
-let pad = ["Katai", "Feri", "Teri", "Sári", "Piri", "Tomi"];
+let pad = ["Kati", "Feri", "Teri", "Sári", "Piri", "Tomi"];
 
 console.log( pad );
 
@@ -103,3 +103,297 @@ console.log(
  */
 
 document.querySelector("#content").innerHTML = `<ul><li>${pad.join("</li><li>")}</li></ul>`;
+
+/*
+    A tömbkezelő függvények magasabb rendű függvényei
+
+    .forEach(function(item, ?itemIndex, ?array)) - lefuttatja a paraméterfüggvényét a tömb minden elemére.
+*/
+
+// iteráljunk végig a pad tömbön forEach segítségével
+
+console.log("-----------------forEach pad------------------");
+/*
+function forEach(tomb, func){
+    for (let i = 0; i < tomb.length; i++)
+        func(tomb[i], i, tomb);
+}
+*/
+
+pad.forEach(function(gyerek){
+    console.log(gyerek);
+});
+
+/*
+function map(tomb, func){
+    let tmp = [];
+    for (let i = 0; i < tomb.length; i++)
+        tmp[i] = func(tomb[i], i, tomb);
+
+    return tmp;
+}
+*/
+
+/*
+    .map(function(item, ?itemIndex, ?array):any) - a tömbök átalakítását teszi lehetővé.
+*/
+
+/*
+	8. //-[Számbontás]-//
+	Írj függvényt mely egy egy number érték tagjait visszatéríti egy tömbben
+        pl: 256 esetén a visszatérési érték [2, 5, 6]
+*/
+
+// Megoldás hagyományosan
+function szambontas(szam) {
+    let szoveg = String(szam);
+    let eredmeny = [];
+
+    for (let i = 0; i < szoveg.length; i++) {
+        eredmeny.push(Number(szoveg[i]));
+    }
+
+    return eredmeny;
+}
+
+//Megoldás .map segítségével
+const szamok = num => String(num).split("").map(Number);
+
+console.log(szamok(5698));
+
+/*
+    .find(function(item, ?itemIndex, ?array):boolean) - visszatér a tömb legelső olyan elemével, amelyre a 
+        paraméterfüggvény true értékkel tér vissza.
+
+    .findLast(function(item, ?itemIndex, ?array):boolean) - visszatér a tömb utolsó olyan elemével, amelyre a 
+        paraméterfüggvény true értékkel tér vissza.
+*/
+
+/*
+function find(tomb, func){
+    for (let i = 0; i < tomb.length; i++)
+        if (func(tomb[i], i, tomb))
+            return tomb[i];
+
+    return null;
+}
+*/
+
+//Keressük meg az első "P" betűs gyereket
+
+const p = pad.find(gyerek => gyerek[0] == "P");
+
+console.log(p);
+
+
+/*
+    .filter(function(item, ?itemIndex, ?array):boolean):array - viszzatér a tömb összes elemével, amelyre a 
+        paraméterfüggvény igazzal tér vissza
+*/
+
+/*
+function filter(tomb, func){
+    let tmp = [];
+    for (let i = 0; i < tomb.length; i++)
+        if (func(tomb[i], i, tomb))
+            tmp.push(tomb[i])
+
+    return tmp;
+}
+*/
+
+console.log(
+    pad.filter(gyerek => gyerek[0] == "P")
+);
+
+const gyerekek = [
+    {
+        id: 1,
+        nev: "Kati",
+        osztaly: 2,
+        neme: "f"
+    },
+    {
+        id: 2,
+        nev: "Feri",
+        osztaly: 2,
+        neme: "m"
+    },
+    {
+        id: 3,
+        nev: "Gizi",
+        osztaly: 3,
+        neme: "f"
+    },
+    {
+        id: 4,
+        nev: "Erzsi",
+        osztaly: 3,
+        neme: "f"
+    },
+    {
+        id: 5,
+        nev: "Pali",
+        osztaly: 2,
+        neme: "m"
+    },
+    {
+        id: 6,
+        nev: "Robi",
+        osztaly: 3,
+        neme: "f"
+    },
+    {
+        id: 7,
+        nev: "Tomi",
+        osztaly: 3,
+        neme: "m"
+    },
+    {
+        id: 8,
+        nev: "Piri",
+        osztaly: 2,
+        neme: "f"
+    },
+    {
+        id: 9,
+        nev: "Rózsi",
+        osztaly: 3,
+        neme: "f"
+    },
+    {
+        id: 10,
+        nev: "Zoli",
+        osztaly: 2,
+        neme: "m"
+    },
+    {
+        id: 11,
+        nev: "Teri",
+        osztaly: 2,
+        neme: "f"
+    }
+];
+
+//Feladat, szűrjük ki a gyerekek közül a 2. osztályos lányokat.
+
+console.log(
+    gyerekek.filter(gyerek => gyerek.osztaly === 2 && gyerek.neme === "f")
+);
+
+//ha csak a névsor kell
+
+console.log(
+    gyerekek.filter(gyerek => gyerek.osztaly === 2 && gyerek.neme === "f").map(gyerek => gyerek.nev)
+);
+
+/*
+    .every(function(item, ?itemIndex, ?array):boolean):boolean - true értékkel tér vissza, ha a paraméterfüggvény
+        a tömb összes elemére true értékkel tér vissza.
+
+    .some(function(item, ?itemIndex, ?array):boolean):boolean - true értékkel tér vissza,ha a paraméter függvény
+        legalább a tömb egy elemére true értékkel tér vissza 
+*/
+
+//Nézzük meg, hogy minden gyerek 3. osztályos-e
+
+console.log(
+    gyerekek.every(gyerek => gyerek.osztaly === 3)
+);
+
+console.log(
+    gyerekek.some(gyerek => gyerek.osztaly === 3)
+);
+
+/*
+    .findIndex(function(item, ?itemIndex, ?array):boolean):number - viszzatér a tömb legelső olyan elemű indexével,
+        amelyre a paraméterfüggvény igazzal tér vissza. Ha nem talált elemet, akkot -1 a visszatérési érték
+
+        .findIndex(function(item, ?itemIndex, ?array):boolean):number - viszzatér a tömb utolsó olyan elemű indexével,
+        amelyre a paraméterfüggvény igazzal tér vissza. Ha nem talált elemet, akkot -1 a visszatérési érték
+*/
+
+//Keressük meg a 9-es id-val rendelkező gyerek indexét.
+
+const id9Index = gyerekek.findIndex(gyerek => gyerek.id === 9);
+
+console.log(id9Index);
+
+
+/*
+    .reduce(function(accumulator, item, ?itemIndex, ?array), ?accumulatorInit):any - a tömb összes elemét felhasználva visszaad egy értéket
+        -accumulatorInit: opcionális, default értéke a tömb első eleme
+    function reduce(tomb, func, accuInit){
+        let accumulator = accuInit || tomb[0];
+
+        for (let i = !accuInit ? 1 : 0; i < tomb.length; i++)
+            accumulator = func(accumulator, tomb[i], i, tomb);
+
+        return accumulator;
+    }
+*/
+
+let nums = [3, 4, 6, 78, 9, 23, 12, 134, 54];
+
+let sum = nums.reduce((ossz, n) => ossz + n);
+
+console.log(nums);
+console.log(sum);
+
+console.log(
+    nums.reduce(((max, n) => n > max ? n : max))
+);
+
+
+/*
+    Tömbök rendezése:
+
+    .sort(?function(elem, nextElem):number )
+        - függvény nélkül alapértelmezetten az angol ABC karakterei szerint rendezi a tömb elemeit
+            - negatív szám (-1) - elem < nextElem
+            - nulla (0) - elem === nextElem
+            - pozitív (1) - elem > nextElem
+*/
+
+pad.unshift("Ákos", "Áron", "András", "Ödön");
+
+console.log(pad);
+
+console.log(pad.sort);
+
+// számtömb rendezése növekvő sorrendben
+
+console.log(
+    nums.sort((a, b) => a - b)
+);
+
+// számtömb rendezése csökkenő sorrendben
+
+console.log(
+    nums.sort((a, b) => b - a)
+);
+
+/*
+    .reverse() - megfordítja a tömb elemeinek a sorrendjét
+*/
+
+// rendezés magyar ABC szerint
+
+console.log(
+    pad.sort((a, b) => a.localeCompare(b))
+);
+
+
+/*
+    Gyakorlat:
+
+    rendezzük a gyerekek tömböt névsor szerint növekvő sorrendbeb
+*/
+
+console.log(
+    gyerekek.sort((a, b) => a.nev.localeCompare(b.nev))
+);
+
+console.log(
+    gyerekek.sort((a, b) => a.nev.localeCompare(b.nev)).map(gyerek => gyerek.nev)
+);
