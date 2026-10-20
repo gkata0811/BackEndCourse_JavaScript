@@ -211,66 +211,77 @@ const gyerekek = [
         id: 1,
         nev: "Kati",
         osztaly: 2,
+        szuletesiDatum: "2019-06-09",
         neme: "f"
     },
     {
         id: 2,
         nev: "Feri",
         osztaly: 2,
+        szuletesiDatum: "2018-11-25",
         neme: "m"
     },
     {
         id: 3,
         nev: "Gizi",
         osztaly: 3,
+        szuletesiDatum: "2018-04-12",
         neme: "f"
     },
     {
         id: 4,
         nev: "Erzsi",
         osztaly: 3,
+        szuletesiDatum: "2018-12-09",
         neme: "f"
     },
     {
         id: 5,
         nev: "Pali",
         osztaly: 2,
+        szuletesiDatum: "2019-08-23",
         neme: "m"
     },
     {
         id: 6,
         nev: "Robi",
         osztaly: 3,
+        szuletesiDatum: "2017-02-18",
         neme: "f"
     },
     {
         id: 7,
         nev: "Tomi",
         osztaly: 3,
+        szuletesiDatum: "2018-03-03",
         neme: "m"
     },
     {
         id: 8,
         nev: "Piri",
         osztaly: 2,
+        szuletesiDatum: "2019-09-23",
         neme: "f"
     },
     {
         id: 9,
         nev: "Rózsi",
         osztaly: 3,
+        szuletesiDatum: "2017-02-20",
         neme: "f"
     },
     {
         id: 10,
         nev: "Zoli",
         osztaly: 2,
+        szuletesiDatum: "2018-05-25",
         neme: "m"
     },
     {
         id: 11,
         nev: "Teri",
         osztaly: 2,
+        szuletesiDatum: "2018-10-20",
         neme: "f"
     }
 ];
@@ -396,4 +407,10 @@ console.log(
 
 console.log(
     gyerekek.sort((a, b) => a.nev.localeCompare(b.nev)).map(gyerek => gyerek.nev)
+);
+
+// Feladat: rendezzük születési dátum szerint növekvő sorrendbe a gyerekeket.
+
+console.log(
+    gyerekek.sort( (a, b) => (new Date(b.szuletesiDatum)) - (new Date(a.szuletesiDatum)))
 );
