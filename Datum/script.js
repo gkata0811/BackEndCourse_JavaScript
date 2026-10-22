@@ -103,3 +103,7 @@ const dateFormat = new Intl.DateTimeFormat(navigator.language, {dateStyle: "full
 console.log(
     dateFormat.format(d5)
 );
+
+console.log(
+    d.toLocaleString(navigator.language, {weekday: "long"})
+);
