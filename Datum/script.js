@@ -1,28 +1,32 @@
-console.log("dátum");
+console.log("Date");
 
 let d = new Date();
 console.log(d);
 
+
 /*
-    - A számítógépes időszámítás 1970 január 1-vel kezdődik
-    - Amit JavaScript-ben ezredmásodpercekben határozunk meg
-        - Ezt nevezzük időbályegnek
-        - Vagyis az időbélyeg(timestamp) nem más, mint az 1970.01.01-től eltelt ezredmásodpercek száma
-    - JavaScript-ben az idő mértékegysége az ezredmásodperc
+    - A számítógépes időszámítás 1970 Január 1-től kezdődik
+    - Amit Javascriptben ezredmásodpercekben határozunk meg.
+        - Ezt nevezzük időbélyegnek.
+        - Vagyis az időbőbélyeg (timestamp) nemmás, mint az 1970 Január 1-től eltelt miliszekundumok száma
+    - Javascritben az idő mértékegysége az ezredmásodperc
+    
 */
 
 /*
-    Dátumok inicializálása
+    Dátumok inicialisálása
+
+
 */
 
-let d1 = new Date('2025-05-15');    // inicializálás dátum stringgel
+let d1 = new Date('2025-05-15'); //inicializálás dátum stringgel
 console.log(d1);
 
-let d2 = new Date('2025-05-15 15:35:45');   // inicializálás dátumidő stringgel
+let d2 = new Date('2025-05-15T15:35:45'); //inicializálás dátumidő sztringgel
 console.log(d2);
 
 /*
-    Inicializálás paraméter listával
+    Inicilaizálás paraméterlisátval
 
     new Date(year, month, date, hours, minutes, seconds, miliseconds);
 */
@@ -30,69 +34,73 @@ console.log(d2);
 const d3 = new Date(2025, 4, 15);
 console.log(d3);
 
+
 const d4 = new Date(2025, 4, 15, 15, 35, 45);
 console.log(d4);
 
 /*
-    Inicializálás időbélyeggel
+    inicializálás időbélyeggel
 */
-const d5 = new Date(2137690346914);
+const d5 = new Date(1121345647025);
 console.log(d5);
 
-// Inicializálás Date objecttel
+// inicializálás Date objecttel
 const d4d = new Date(d4);
 console.log(d4d);
 
 /*
-    .getTime(): number - időbélyeg
-    .getFullYear() - visszaadja az évet
-    .getMonth() - visszaadja a hónap tömbindexét
+    .getTime():number - időbélyeg
+
+    .getFullYear():number - vissza adja az évet
+    .getMonth() - vissza tér a hónap tömbindexével
+
 */
+
 
 let honapok = ["Január", "Február", "Március", "Április", "Május", "Június", "Július", "Augusztus", "Szeptember", "Október", "November", "December"];
 
 console.log(
-    `Most ${honapok[d.getMonth()]} hónapot írunk.`
-)
+    `Most ${honapok[d.getMonth()]} hónapot írunk`
+);
 
 /*
     .getDate() - visszaadja, hogy hányadika van
-    .getDay() - visszaadja a hét napjának tömbindexét
+    .getDay() - vissza adja a hét napjának a tömbindexét.
 */
 
-let hetnapja = ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"]
+let hetnapja = ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"];
 
 console.log(
-    `Ma ${hetnapja[d.getDay()]} van.`
-)
+    `Ma ${hetnapja[d.getDay()]} van`
+);
 
 /*
     .getHours() - visszaadja az órát
-    .getMinutes() - visszaadja a percet
+    .getMinutes() - visszaadja az percetű
     .getSeconds() - visszaadja a másodpercet
-    .getMiliseconds() - visszaadja az ezredmásodpercet
+    .getMiliseconds() - visszaadja az ezredmásodprecet
 */
 
 /*
-    Minden .get függvénynek megvan a .set társa is, amivel az adott paramétert be lehet állítani.
-        Kivéve a .getDay() függvényt.
+    Minden .get függvénynek, megvan a .set társa is, amivel az adott paramétert be lehet állítani.
+        Kivéve a getDay függvényt.
 
     !!!Figyelem!!!
-        - A JavaScript szépen kezeli a túlcsordulást
-            (Például a setDate esetében lehet hasznos)
+        - A Javascript szépenn kezeli a túlcsordulást!
+        (Például a setDate esetében lehet ez hasznos)
 
-        - Az összehasonlító és arimetikai műveletekben a dátum időbélyeggé alakul, így ki lehet vonni két dátumot egymásból, össze lehet őket hasonlítani...
+        - Az összehasonlító és aritmetikai műveletekben a dátum időbélyeggé alakul
+         Így ki lehet vonni őket egymásból, össze lehet hasonlítani... stb...  
+
 */
 
-let keplet = 1000 * 60 * 60 * 24 * 365;
+let keplet = 1000 * 60 * 60 * 24 * 365; 
 
 /*
-    A dátumok nemzetköziesítése
-*/
+    A dátumok nezetköziesítése
 
-console.log(
-    d.toLocaleString("hu-HU", {dateStyle: "full", timeStyle: "long"})
-);
+
+*/
 
 console.log(
     d.toLocaleString(navigator.language, {dateStyle: "full", timeStyle: "long"})
