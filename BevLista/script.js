@@ -1,9 +1,9 @@
-console.log("bevásárló lista");
+console.log("Bevliszt");
 
 let content = document.querySelector('#content');
 
 let input = document.createElement('input');
-input.type = "text";    // <input type="text">
+input.type = "text"; 
 
 content.appendChild(input);
 
@@ -12,9 +12,6 @@ button.textContent = "Hozzáad";
 
 content.appendChild(button);
 
+
 let list = document.createElement('ul');
 content.appendChild(list);
-
-content.onclick = function(){
-    alert("Szia");
-}
