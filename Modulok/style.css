@@ -1,0 +1,31 @@
+.content{
+
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.text-box{
+
+  width: 240px;
+  background-color: #fff;
+  border-radius: 7px;
+  box-shadow: 2px 2px 18px -2px #00000052;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.text-box h2{
+    
+  color: #888;
+}
+
+.text-box h4{
+    
+  color: #a5a5a5;
+}
+
+.text-box p{
+    
+  color: #3f3f3f;
+}
